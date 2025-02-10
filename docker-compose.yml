@@ -2,12 +2,12 @@ name: server-buscaracing-admin
 
 services:
   mysql:
-    image: bitnami/mysql:8.4.4
+    image: bitnami/mysql:8.0
     container_name: buscaracing_mysql_container
     ports:
       - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root_password  # Senha do root
-      MYSQL_DATABASE: buscaracing_db      # Nome do banco
-      MYSQL_USER: user                    # Usuário
-      MYSQL_PASSWORD: password            # Senha do usuário
+      MYSQL_ROOT_PASSWORD: root       # Senha do root
+      MYSQL_DATABASE: buscaracing_db  # Nome do banco
+      MYSQL_USER: buscaracing         # Usuário
+      MYSQL_PASSWORD: buscaracing     # Senha do usuário
