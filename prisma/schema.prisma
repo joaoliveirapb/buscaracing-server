@@ -6,3 +6,28 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Moto {
+  id          String  @id @default(uuid())
+  slug        String  @unique
+  name        String
+  description String
+  price       Float
+  brand       String
+  model       String
+  year        Int
+  km          Int
+  images      Image[]
+
+  @@map("motos")
+}
+
+model Image {
+  id      String @id @default(uuid())
+  url     String
+  path    String
+  moto    Moto   @relation(fields: [moto_id], references: [id], onDelete: Cascade)
+  moto_id String
+
+  @@map("images")
+}
