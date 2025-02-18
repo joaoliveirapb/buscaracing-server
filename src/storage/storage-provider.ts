@@ -6,4 +6,6 @@ export interface StorageProvider {
     url: string
     path: string
   }>
+
+  deleteFile(path: string): Promise<void>
 }

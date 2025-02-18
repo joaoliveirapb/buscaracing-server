@@ -3,6 +3,7 @@ import type { MultipartFile } from '@fastify/multipart'
 import { pipeline } from 'node:stream/promises'
 import path from 'node:path'
 import fs from 'node:fs'
+import fsPromises from 'node:fs/promises'
 import { randomUUID } from 'node:crypto'
 
 export class LocalStorageProvider implements StorageProvider {
@@ -25,5 +26,9 @@ export class LocalStorageProvider implements StorageProvider {
       url,
       path: fullPath,
     }
+  }
+
+  async deleteFile(path: string) {
+    await fsPromises.unlink(path)
   }
 }
