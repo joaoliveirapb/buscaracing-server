@@ -6,4 +6,10 @@ export class PrismaImagesRepository implements ImagesRepository {
   async create(data: Prisma.ImageCreateManyInput[]) {
     await prisma.image.createMany({ data })
   }
+
+  async delete(id: string) {
+    await prisma.image.delete({
+      where: { id },
+    })
+  }
 }
