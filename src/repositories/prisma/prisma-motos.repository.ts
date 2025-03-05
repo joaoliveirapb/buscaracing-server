@@ -23,6 +23,14 @@ export class PrismaMotosRepository implements MotosRepository {
     return moto
   }
 
+  async update(id: string, data: Prisma.MotoUpdateInput) {
+    const moto = await prisma.moto.update({
+      where: { id },
+      data,
+    })
+    return moto
+  }
+
   async delete(id: string) {
     await prisma.moto.delete({
       where: { id },
