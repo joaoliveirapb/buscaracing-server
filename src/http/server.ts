@@ -1,12 +1,19 @@
 import { fastify } from 'fastify'
 import { fastifyCors } from '@fastify/cors'
+import { fastifyStatic } from '@fastify/static'
 import { fastifyMultipart } from '@fastify/multipart'
 import { appRoutes } from './routes'
+import path from 'node:path'
 
 const app = fastify()
 
 app.register(fastifyCors, {
   origin: '*',
+})
+
+app.register(fastifyStatic, {
+  root: path.join(__dirname, '../../uploads'),
+  prefix: '/uploads/',
 })
 
 app.register(fastifyMultipart, {
